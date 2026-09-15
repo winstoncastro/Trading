@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Screener de Criptomonedas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Screener de Criptomonedas</h1>
+    <p class="subtitle">Top 10 monedas del exchange que cumplen dos criterios configurables</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="criteria-grid">
+        <fieldset class="criterio">
+          <legend>Criterio 1</legend>
+          <label>Parámetro
+            <select id="param1"></select>
+          </label>
+          <label>Condición
+            <select id="cond1"></select>
+          </label>
+          <label>Umbral
+            <input type="number" id="umbral1" step="any" value="5" />
+          </label>
+        </fieldset>
+
+        <fieldset class="criterio">
+          <legend>Criterio 2</legend>
+          <label>Parámetro
+            <select id="param2"></select>
+          </label>
+          <label>Condición
+            <select id="cond2"></select>
+          </label>
+          <label>Umbral
+            <input type="number" id="umbral2" step="any" value="10000000" />
+          </label>
+        </fieldset>
+      </div>
+
+      <div class="options-grid">
+        <label>Exchange
+          <select id="exchange"></select>
+        </label>
+        <label>Activo de cotización
+          <select id="quoteAsset"></select>
+        </label>
+        <label>Ordenar por
+          <select id="sortParam"></select>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="descending" checked />
+          Descendente
+        </label>
+      </div>
+
+      <div class="frequency-row">
+        <label>Consultar cada
+          <input type="number" id="intervalValue" min="1" step="any" value="30" />
+        </label>
+        <select id="intervalUnit">
+          <option value="1">Segundos</option>
+          <option value="60">Minutos</option>
+        </select>
+        <button id="startBtn" class="primary">Iniciar monitoreo</button>
+        <button id="stopBtn" disabled>Detener</button>
+      </div>
+
+      <p id="status" class="status">Configure los criterios y presione Iniciar.</p>
+    </section>
+
+    <section class="panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Símbolo</th>
+              <th>Precio</th>
+              <th>Cambio 24h (%)</th>
+              <th>Volumen 24h</th>
+              <th>Operaciones</th>
+              <th>Rango % 24h</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <tr class="empty-row"><td colspan="7">Sin datos todavía.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
